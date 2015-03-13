@@ -2,6 +2,7 @@
 # simple choose-your-own-adventure game
 import sys, time, random
 N = ['poop', 'toilet', 'dinosaur']
+PN = ['Queen Elsa', 'President Obama', 'Batman']
 V = ['run', 'poop', 'pee']
 A = ['smelly', 'dark', 'slimy', 'cold', 'disgusting']
 LEVELS = [
@@ -9,7 +10,10 @@ LEVELS = [
     { 'intro' : 'You are now on the roof. It is %s outside. You kind of want to %s but that is not an option. How do you want to proceed?\n', 'subs' : [A, V], 'choices' : ['look up', 'look at the next building over'] },
     { 'intro' : 'It is too %s to see clearly.\n', 'subs' : [A], 'choices' : ['go back inside through the door', 'climb back in through the window'] },
     { 'intro' : 'It was difficult, but you are back inside. You hear a noise from downstairs.\n', 'subs' : [], 'choices' : ['put your ear to the floor', 'go to the top of the stairs to listen'] },
-    { 'intro' : 'It\'s music that you hear!\n', 'subs' : [], 'choices' : ['Start singing', 'Try to whistle'] },
+    { 'intro' : 'It\'s music that you hear! It sounds a little bit like %s, but you can\'t be sure\n', 'subs' : [PN], 'choices' : ['Start singing along', 'Try to whistle instead'] },
+    { 'intro' : 'Someone hears you from downstairs, because the music stops and you hear whispering. Now you really want to %s. But do you have time?\n', 'subs' : [V], 'choices' : ['Hide', 'Go Downstairs'] },
+    { 'intro' : 'Whoa! You trip over a %s that you didn\'t see! It\'s %s!\n', 'subs' : [N, A], 'choices' : ['Call for help', 'wait'] },
+    { 'intro' : 'You must have fallen asleep. Papi comes in to wake you up. You want to wear your %s shirt, but it\'s in the laundry. What do you want for breakfast?\n', 'subs' : [PN], 'choices' : ['Fried egg sandwich', '100 Nutella crepes', 'yogurt'] },
 ]
 FINAL_OUTCOMES = [lambda x : lambda : slow_print("you win\n"), lambda x : lambda : slow_print("you lose\n")]
 OUTCOMES = FINAL_OUTCOMES + [lambda x : generate_dictionary(x)]
